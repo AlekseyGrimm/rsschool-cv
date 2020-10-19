@@ -11,4 +11,4 @@
 5. Calculator
 6. **Training on the UpSkill Lab program from Epam.**
 7. *Higher legal education. Graduated from the Academy of the Ministry of Internal Affairs of the Republic of Belarus.*
-8. Level of English A2.
+8. Level of English ~C2~ A2.
