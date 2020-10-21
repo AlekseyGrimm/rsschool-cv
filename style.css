@@ -4,7 +4,7 @@ body {
     width: 100%;
     max-width: 1024px;
     margin: 0 auto;
-    background-color: #543e3e80;
+    background-color:#66b95480;
   }
   @media (max-width: 640px) {
     body {
@@ -87,7 +87,7 @@ body {
   }  
   .objective {
     font-size: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: #f3a93d6e;
     padding: 8px;
     border-radius: 50px;
     margin-bottom: 5%;
@@ -97,7 +97,7 @@ body {
   }
   h1 {
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 40px;
+    font-size: 50px;
   }
   p, li, span {
     font-family: Arial, Helvetica, sans-serif;
@@ -115,7 +115,7 @@ body {
     border-radius: 60px;
   }
   .about {
-    background-color:#ff040433;
+    background-color:#6792c387;
     border-radius: 60px;
     padding: 10px;
   }
@@ -139,7 +139,7 @@ body {
   a[href*="git"]:hover {
     position: relative;
     opacity: 1;
-    transform: scale(2);
+    transform: scale(1.2);
   }
 
   a[href*="tel"]::before {
@@ -157,7 +157,7 @@ body {
   a[href*="tel"]:hover {
     position: relative;
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
   a[href*="mail"]::before {
     content: "";
@@ -173,5 +173,5 @@ body {
   a[href*="mail"]:hover {
     position: relative;
     opacity: 1;
-    transform: scale(1.1);
+    transform: scale(1.2);
   }
