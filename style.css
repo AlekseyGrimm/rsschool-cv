@@ -1,0 +1,177 @@
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1024px;
+    margin: 0 auto;
+    background-color: #543e3e80;
+  }
+  @media (max-width: 640px) {
+    body {
+      align-items: center;
+    }
+  }
+  .cont1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+  }
+  .cont2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
+  }
+  .contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+  .name {
+    display: flex;
+    flex-direction: column;
+  }
+  .data {
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    display: flex;
+    justify-content: space-around;
+  }
+  @media (max-width: 640px) {
+    header {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .about {
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+  .skills_and_education {
+    display: inline-flex;
+    justify-content: space-between;
+    margin-left: 7%;
+    margin-right: 5%;
+  }
+  @media (max-width: 640px) {
+    .skills_and_education {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+  }
+  .devtool_and_languages {
+    display: inline-flex;
+    justify-content: space-between;
+    margin-left: 7%;
+    margin-right: 13%;
+  }
+  @media (max-width: 640px) {
+    .devtool_and_languages {
+      display: flex;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+  }
+  .all_data {
+    display: flex;
+    flex-direction: column;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+  footer {
+    text-align: center;
+  }  
+  .objective {
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 8px;
+    border-radius: 50px;
+    margin-bottom: 5%;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  h1 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 40px;
+  }
+  p, li, span {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  .objective > span {
+    font-weight: normal;
+  }
+  .span_education {
+    display: block;
+  }
+  .bold {
+    font-weight: bold;
+  }
+  img {
+    border-radius: 60px;
+  }
+  .about {
+    background-color:#ff040433;
+    border-radius: 60px;
+    padding: 10px;
+  }
+  a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    color: #000;
+    text-decoration: none;
+  }  
+  a[href*="git"]::before {
+    content: "";
+    background-image: url(https://pngimg.com/uploads/github/github_PNG58.png);
+    background-size: cover;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-left: 97px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  a[href*="git"]:hover {
+    position: relative;
+    opacity: 1;
+    transform: scale(2);
+  }
+
+  a[href*="tel"]::before {
+    content: "";
+    background-image: url(https://pngimg.com/uploads/phone/phone_PNG49052.png);
+    background-size: cover;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+    margin-left: 20px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  a[href*="tel"]:hover {
+    position: relative;
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  a[href*="mail"]::before {
+    content: "";
+    background-image: url(https://pngimg.com/uploads/email/email_PNG55.png);
+    background-size: cover;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  a[href*="mail"]:hover {
+    position: relative;
+    opacity: 1;
+    transform: scale(1.1);
+  }
