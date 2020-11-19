@@ -5,165 +5,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simple-Singolo</title>
     <link href="./Logo/" rel="stylesheet"/>
-    <link rel="stylesheet" href="styles.css" />
     <script src="Splide.js"></script>
+    <link rel="stylesheet" href="styles.css"/>
   </head>
-  <body>
-    <header class="header">
-      <div class="header__wrapper">
-          <div class="header__burger header__burger--not-active"></div>
-          <h1 class="header__logo">SINGOLO</h1>
-          <nav>
-              <ul class="navigation">
-                  <li class="navigation__item">
-                      <a href="#" class="navigation__link navigation__link--active" id="homeId">HOME</a>
-                  </li>
-                  <li class="navigation__item">
-                      <a href="#services" class="navigation__link" id="servicesId">SERVICES</a>
-                  </li>
-                  <li class="navigation__item">
-                      <a href="#portfolio" class="navigation__link" id="portfolioId">PORTFOLIO</a>
-                  </li>
-                  <li class="navigation__item">
-                      <a href="#" class="navigation__link">ABOUT</a>
-                  </li>
-                  <li class="navigation__item">
-                      <a href="#" class="navigation__link">CONTACT</a>
-                  </li>
-              </ul>
-          </nav>
+  <body id="body" class="body">
+    <header id="header" class="header">
+      <div class="burgerShadow"></div>
+      <div class="wrapper header__wrapper">
+        <div class="burger"><img id="burgerImage" src="./img/Burger-menu-icon.png" width="100%" alt="burger"></div>
+        <div class="header_mainLogo">
+          <h1>SINGOLO<span class="header_secondLogo">*</span></h1>
+        </div>
+        <nav class="header_navigation">
+          <ul class="header_navigationList">
+            <li id="header_navigationList_Link" class="header_navigationList_Link"><a id="homeHeader" href="#"><span>HOME</span></a></li>
+            <li class="header_navigationList_Link"><a id="servicesHeader" href="#tools">SERVICES</a></li>
+            <li class="header_navigationList_Link"><a id="portfolioHeader" href="#portfolio">PORTFOLIO</a> </li>
+            <li class="header_navigationList_Link"><a id="aboutHeader" href="#">ABOUT</a></li>
+            <li class="header_navigationList_Link"><a id="contactHeader" href="#footer">CONTACT</a></li>
+          </ul>
+        </nav>
       </div>
-  </header>
+      <div class="wrapper header__wrapper-burger">
+        <div class="mainLogo-burger">
+           <div class="burger-burger"><img id="burger-burger" src="./img/Burger-menu-icon.png" width="100%" alt="burger"></div>
+        <div class="header_mainLogo-burger">
+          <h1>SINGOLO<span class="header_secondLogo-burger">*</span></h1>
+        </div>
+      </div>
+        <nav class="header_navigation-burger">
+          <ul class="header_navigationList-burger">
+            <li  class="header_navigationList_Link-burger"><a id="homeBurger" href="#"><span>HOME</span></a></li>
+            <li  class="header_navigationList_Link-burger"><a id="servicesBurger" href="#tools">SERVICES</a></li>
+            <li  class="header_navigationList_Link-burger"><a id="portfolioBurger" href="#portfolio">PORTFOLIO</a></li>
+            <li class="header_navigationList_Link-burger"><a id="aboutBurger" href="#">ABOUT</a></li>
+            <li class="header_navigationList_Link-burger"><a id="contactBurger" href="#">CONTACT</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <div class="border border__header"></div>
     <main>
-          <div class="splide"  id="slide">
-            <div class="splide__arrows">
-                <button class="splide__arrow splide__arrow--prev" type="button" aria-controls="slide-track" aria-label="Go to last slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 27" width="40" height="40">
-                        <path d="M0.697849 22.9923C-0.233349 23.9092 -0.232514 25.3553 0.699743 26.2713C1.68867 27.2429 3.33657 27.2429 4.32549 26.2713L15.0449 15.7392C16.3184 14.4879 16.3184 12.5121 15.0449 11.2608L4.32549 0.728735C3.33657 -0.242913 1.68867 -0.242911 0.699746 0.728737C-0.232511 1.64471 -0.233347 3.09077 0.69785 4.00769L8.06645 11.2634C9.33653 12.514 9.33653 14.486 8.06645 15.7366L0.697849 22.9923Z" fill="#E94348"></path>
-                    </svg>
-                </button>
-                <button class="splide__arrow splide__arrow--next" type="button" aria-controls="slide-track" aria-label="Next slide">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 27" width="40" height="40">
-                        <path d="M0.697849 22.9923C-0.233349 23.9092 -0.232514 25.3553 0.699743 26.2713C1.68867 27.2429 3.33657 27.2429 4.32549 26.2713L15.0449 15.7392C16.3184 14.4879 16.3184 12.5121 15.0449 11.2608L4.32549 0.728735C3.33657 -0.242913 1.68867 -0.242911 0.699746 0.728737C-0.232511 1.64471 -0.233347 3.09077 0.69785 4.00769L8.06645 11.2634C9.33653 12.514 9.33653 14.486 8.06645 15.7366L0.697849 22.9923Z" fill="#E94348"></path>
-                    </svg>
-                </button>
+      <section id="slider" class="slider">
+        <div class="splide"  id="slide">
+          <div class="splide__arrows">
+              <button class="splide__arrow splide__arrow--prev" type="button" aria-controls="slide-track" aria-label="Go to last slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 27" width="40" height="40">
+                      <path d="M0.697849 22.9923C-0.233349 23.9092 -0.232514 25.3553 0.699743 26.2713C1.68867 27.2429 3.33657 27.2429 4.32549 26.2713L15.0449 15.7392C16.3184 14.4879 16.3184 12.5121 15.0449 11.2608L4.32549 0.728735C3.33657 -0.242913 1.68867 -0.242911 0.699746 0.728737C-0.232511 1.64471 -0.233347 3.09077 0.69785 4.00769L8.06645 11.2634C9.33653 12.514 9.33653 14.486 8.06645 15.7366L0.697849 22.9923Z" fill="#E94348"></path>
+                  </svg>
+              </button>
+              <button class="splide__arrow splide__arrow--next" type="button" aria-controls="slide-track" aria-label="Next slide">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 27" width="40" height="40">
+                      <path d="M0.697849 22.9923C-0.233349 23.9092 -0.232514 25.3553 0.699743 26.2713C1.68867 27.2429 3.33657 27.2429 4.32549 26.2713L15.0449 15.7392C16.3184 14.4879 16.3184 12.5121 15.0449 11.2608L4.32549 0.728735C3.33657 -0.242913 1.68867 -0.242911 0.699746 0.728737C-0.232511 1.64471 -0.233347 3.09077 0.69785 4.00769L8.06645 11.2634C9.33653 12.514 9.33653 14.486 8.06645 15.7366L0.697849 22.9923Z" fill="#E94348"></path>
+                  </svg>
+              </button>
+          </div>
+          <div class="splide__track">
+            <ul class="splide__list">
+              <li class="splide__slide"> <img width="100%" height="auto" src="./img/slide1.jpg"></li>
+              <li class="splide__slide"><img width="100%" height="auto" src="./img/slide2.jpg"></li>
+            </ul>
+          </div>
+        </div>
+     </section>
+     <div class="border border__slider"></div>
+     <section class="tools">
+      <div class="position" id="tools"></div>
+      <div class="wrapper tools__wrapper">
+        <h2>Our Services</h2>
+        <p class="tools_text">
+          Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.
+          Duis mollis, non commodo luctus, nisi erat porttitor ligula, eget
+          lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo,
+          tortor mauris condimentum nibh.
+        </p>
+        <div class="tools_icon">
+          <div class="layout-3-column">
+            <div class="column_tool ">
+              <span class="ico tools_ico__design"><img src="./img/services-item-1.svg" alt="1"/></span>
+              <div class="icons">
+                <h3 class="tool_h">Custom Design</h3>
+                <p class="tool_text">Curabitur vestibulum eget mauris quis laoreet. Phasellus in quam laoreet, viverra lacus ut, ultrices velit.</p>
+              </div>
             </div>
-            <div class="splide__track">
-              <ul class="splide__list">
-                <li class="splide__slide"> <img src="./img/slide1.jpg"></li>
-                <li class="splide__slide"><img src="./img/slide2.jpg"></li>
-              </ul>
+            <div class="column_tool">
+              <span class="ico tools_ico__ideas"><img src="./img/services-item-2.svg" alt="2"/></span>
+              <div class="icons">
+                <h3 class="tool_h">Inovative Ideas</h3>
+                <p class="tool_text"> Quisque luctus, quam eget molestie commodo, lacus purus cursus purus, nec rutrum tellus dolor id lorem. </p>
+              </div>
+            </div>
+            <div class="column_tool">
+              <span class="ico tools_ico__answer"><img src="./img/services-item-3.svg" alt="3"/></span>
+              <div class="icons">
+                <h3 class="tool_h">Love Is The Answer</h3>
+                <p class="tool_text">Nulla sed nunc et tortor luctus faucibus. Morbi at aliquet turpis, et consequat felis. Quisque condimentum.</p>
+              </div>
+            </div>
+            <div class="column_tool">
+              <span class="ico tools_ico__layout"><img src="./img/services-item-4.svg" alt="4"/></span>
+              <div class="icons">
+                <h3 class="tool_h">Responsive Layout</h3>
+                <p class="tool_text"> Sed porttitor placerat rhoncus. In at nunc tellus. Maecenas blandit nunc ligula. Praesent elit leo.</p>
+              </div>
+            </div>
+            <div class="column_tool">
+              <span class="ico tools_ico__support"><img src="./img/services-item-5.svg" alt="5"/></span>
+              <div class="icons">
+                <h3 class="tool_h">24 / 7 Support</h3>
+                <p class="tool_text">Vivamus vel quam lacinia, tincidunt dui non, vehicula nisi. Nulla a sem erat. Pellentesque egestas venenatis lorem.</p>
+              </div>
+            </div>
+            <div class="column_tool">
+              <span class="ico tools_ico__star"><img src="./img/services-item-6.svg" alt="6"/></span>
+              <div class="icons">
+                <h3 class="tool_h">Feel Like A Star</h3>
+                <p class="tool_text">Quisque hendrerit purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam tellus.</p>
+              </div>
             </div>
           </div>
-    <div class="border border__slider"></div>
-    <section class="services" id="services">
-      <div class="wrapper">
-          <h2 class="title">Our Services</h2>
-          <p class="description">
-              Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis mollis, non commodo luctus,
-              nisi
-              erat porttitor ligula, eget lacinia odio sem nec elit. Fusce dapibus, tellus ac cursus commodo, tortor
-              mauris condimentum nibh.
-          </p>
-          <div class="services__more-details">
-              <article class="services__items">
-                  <div class="services__circle">
-                      <img src="./img/services-item-1.svg" alt="pencil" class="services__item-icon">
-                  </div>
-                  <div class="services__text-content">
-                      <h3 class="services__item-title">Custom Design</h3>
-                      <p class="services__item-about">
-                          Curabitur vestibulum eget mauris quis laoreet. Phasellus in quam laoreet, viverra lacus ut,
-                          ultrices
-                          velit.
-                      </p>
-                  </div>
-              </article>
-              <article class="services__items">
-                  <div class="services__circle">
-                      <img src="./img/services-item-2.svg" alt="lamp"
-                          class="services__item-icon services__item-icon--move-right">
-                  </div>
-                  <div class="services__text-content">
-                      <h3 class="services__item-title">Inovative Ideas</h3>
-                      <p class="services__item-about">
-                          Quisque luctus, quam eget molestie commodo, lacus purus cursus purus, nec rutrum tellus
-                          dolor id
-                          lorem.
-                      </p>
-                  </div>
-              </article>
-              <article class="services__items">
-                  <div class="services__circle">
-                      <img src="./img/services-item-3.svg" alt="heart"
-                          class="services__item-icon services__item-icon--move-down">
-                  </div>
-                  <div class="services__text-content">
-                      <h3 class="services__item-title">Love Is The Answer</h3>
-                      <p class="services__item-about">
-                          Nulla sed nunc et tortor luctus faucibus. Morbi at aliquet turpis, et consequat felis.
-                          Quisque
-                          condimentum.
-                      </p>
-                  </div>
-              </article>
-              <article class="services__items">
-                  <div class="services__circle">
-                      <img src="./img/services-item-4.svg" alt="smartphone"
-                          class="services__item-icon services__item-icon--move-right">
-                  </div>
-                  <div class="services__text-content">
-                      <h3 class="services__item-title">Responsive Layout</h3>
-                      <p class="services__item-about">
-                          Sed porttitor placerat rhoncus. In at nunc tellus. Maecenas blandit nunc ligula. Praesent
-                          elit
-                          leo.
-                      </p>
-                  </div>
-              </article>
-              <article class="services__items">
-                  <div class="services__circle">
-                      <img src="./img/services-item-5.svg" alt="cloud"
-                          class="services__item-icon services__item-icon--move-down">
-                  </div>
-                  <div class="services__text-content">
-                      <h3 class="services__item-title">24 / 7 Support</h3>
-                      <p class="services__item-about">
-                          Vivamus vel quam lacinia, tincidunt dui non, vehicula nisi. Nulla a sem erat. Pellentesque
-                          egestas
-                          venenatis lorem .
-                      </p>
-                  </div>
-              </article>
-              <article class="services__items">
-                  <div class="services__circle">
-                      <img src="./img/services-item-6.svg" alt="star" class="services__item-icon">
-                  </div>
-                  <div class="services__text-content">
-                      <h3 class="services__item-title">Feel Like A Star</h3>
-                      <p class="services__item-about">
-                          Quisque hendrerit purus dapibus, ornare nibh vitae, viverra nibh. Fusce vitae aliquam
-                          tellus.
-                      </p>
-                  </div>
-              </article>
-          </div>
+        </div>
       </div>
-  </section>
-  <div class="border border__tools"></div>
-    <section id="portfolio" class="portfolio">
+      <div class="border border__tools"></div>
+     </section>
+     <section class="portfolio">
+      <div class="position" id="portfolio"></div>
       <div class="wrapper portfolio__wrapper">
         <h2>Portfolio</h2>
         <p class="tools_text"> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit.</p>
         <div class="portfolio_tags">
-          <span class="tag tag__selected">All</span>
-          <span class="tag tag__bordered">Web Design</span>
-          <span class="tag tag__bordered">Graphic Design</span>
-          <span class="tag tag__bordered">Artwork</span>
+          <span id="tagAll" class="tag">All</span>
+          <span id="tagWebDesign" class="tag">Web Design</span>
+          <span id="tagGraphicDesign" class="tag">Graphic Design</span>
+          <span id="tagArtWork" class="tag">Artwork</span>
         </div>
         <div class="portfolio_images">
-          <div class="images"><img src="./img/portfolio-1.png" width="100%" alt="1" /></div>
+          <div id="imagesOne" class="images"><img src="./img/portfolio-1.png" width="100%" alt="1" /></div>
           <div class="images"><img src="./img/portfolio-2.png" width="100%" alt="2" /></div>
           <div class="images"><img src="./img/portfolio-3.png" width="100%" alt="3" /></div>
           <div class="images"><img src="./img/portfolio-4.png" width="100%" alt="4" /></div>
@@ -177,11 +154,11 @@
           <div class="images"><img src="./img/portfolio-12.png" width="100%" alt="12" /></div>
         </div>
       </div>
-    </section>
-    <div class="border border__portfolio"></div>
-    <footer id="footer">
+     </section>
+     <div class="border border__portfolio"></div>
+     <footer id="footer">
       <div class="wrapper footer__wrapper">
-        <span class="footer_copiright">&copy; Copiright 2013</span>
+        <span class="footer_copiright">&copy; Copiright 2020</span>
         <ul class="footer_links">
           <li>
               <a href="https://www.facebook.com/" target="_blank"><img src="./img/ico-facebook.svg" alt="facebook"/></a>
@@ -197,15 +174,15 @@
           </li>
         </ul>
       </div>
-    </footer>
+     </footer>
     </main>
-    <script src="script.js"></script> 
     <script>
       new Splide( '.splide', {
-        type: 'loop', 
+        type: 'loop',
+        speed: 1000, 
         perPage: 1, 
-        heightRatio: 0.37,
     },).mount();     
-    </script>    
+    </script> 
+        <script src="script.js"></script>    
   </body>
 </html>
