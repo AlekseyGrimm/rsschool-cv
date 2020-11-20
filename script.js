@@ -31,15 +31,16 @@ class Calculator {
 	}
 
 	delete() {
-		this.currentOperand = this.currentOperand.toString().slice(0, -1);
+		this.currentOperand = this.currentOperand.toString().slice(0, -1); 
+		// delete one numder
 
 	}
-
+		// add number
 	appendNumber(number) {
 		if (this.currentOperand.length > 17) {
 			return;
 		}
-		if (number == '-') {
+		if (number == '-') { 
 			if (this.currentOperandTextElement.innerText.length < 1) {
 				if (minusScreen.innerText == '-') {
 					minusScreen.innerText = '';
@@ -99,7 +100,6 @@ class Calculator {
 			minusScreen.innerText = '';
 			this.currentOperand = this.currentOperand.toString() + number.toString();
 		}
-
 		if (number === '.' && this.currentOperand.includes('.')) return;
 	}
 
@@ -136,7 +136,7 @@ class Calculator {
 			computation = res;
 		} else if (current < 0) {
 			this.currentOperandTextElement.innerText =
-				"NaN =(";
+				"NaN";
 		} else {
 			complutation = Math.sqrt(current);
 		}
@@ -151,6 +151,8 @@ class Calculator {
 		this.operation = undefined;
 		this.previousOperand = "";
 	}
+
+	//this mathematical operations 
 	compute() {
 		let complutation;
 		const prev = parseFloat(this.previousOperand);
@@ -184,9 +186,8 @@ class Calculator {
 				complutation = Math.pow(prev, current)
 				break
 			default:
-				return
-
-		}
+				return;
+			}
 		this.readyToReset = true;
 		if (Number.isInteger(complutation)) {
 			this.currentOperand = complutation;
@@ -201,14 +202,15 @@ class Calculator {
 
 	}
 
+		//display value is now or numbers separated by commas
 	getDisplayNumber(number) {
 
 		const stringNumber = number.toString();
-
 		const integerDigits = parseFloat(stringNumber.split('.')[0]);
 		const decimalDigits = stringNumber.split('.')[1];
 		let integerDisplay;
 		integerDisplay = '';
+
 		if (isNaN(integerDigits)) {
 			integerDisplay = '';
 		} else {
@@ -221,6 +223,8 @@ class Calculator {
 			return integerDisplay;
 		}
 	}
+
+	// clean display with new equation input
 	updateDisplay() {
 		this.currentOperandTextElement.innerText = this.getDisplayNumber(this.currentOperand);
 		if (this.operation != null) {
@@ -229,11 +233,11 @@ class Calculator {
 		} else {
 			this.previousOperandTextElement.innerText = ''
 		}
-
-
 	}
 }
+
 const numToFixed = x => ~(x + '').indexOf('.') ? (x + '').split('.')[1].length : 0;
+//number of characters after zero
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
 
