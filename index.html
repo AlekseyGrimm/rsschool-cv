@@ -10,10 +10,8 @@
   </head>
   <body id="body" class="body">
     <header id="header" class="header">
-      <div class="burgerShadow"></div>
       <div class="wrapper header__wrapper">
-        <div class="burger"><img id="burgerImage" src="./img/Burger-menu-icon.png" width="100%" alt="burger"></div>
-        <div class="header_mainLogo">
+      <div class="header_mainLogo">
           <h1>SINGOLO<span class="header_secondLogo">*</span></h1>
         </div>
         <nav class="header_navigation">
@@ -26,22 +24,19 @@
           </ul>
         </nav>
       </div>
-      <div class="wrapper header__wrapper-burger">
-        <div class="mainLogo-burger">
-           <div class="burger-burger"><img id="burger-burger" src="./img/Burger-menu-icon.png" width="100%" alt="burger"></div>
-        <div class="header_mainLogo-burger">
-          <h1>SINGOLO<span class="header_secondLogo-burger">*</span></h1>
-        </div>
-      </div>
-        <nav class="header_navigation-burger">
-          <ul class="header_navigationList-burger">
-            <li  class="header_navigationList_Link-burger"><a id="homeBurger" href="#"><span>HOME</span></a></li>
-            <li  class="header_navigationList_Link-burger"><a id="servicesBurger" href="#tools">SERVICES</a></li>
-            <li  class="header_navigationList_Link-burger"><a id="portfolioBurger" href="#portfolio">PORTFOLIO</a></li>
-            <li class="header_navigationList_Link-burger"><a id="aboutBurger" href="#">ABOUT</a></li>
-            <li class="header_navigationList_Link-burger"><a id="contactBurger" href="#">CONTACT</a></li>
-          </ul>
-        </nav>
+      <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox"/>
+        <label class="menu__btn" for="menu__toggle">
+          <span></span>
+        </label>      
+        <ul class="menu__box">
+          <span class="box-sing">SINGOLO*</span>
+          <li><a class="menu__item" href="#">HOME</a></li>
+          <li><a class="menu__item" href="#tools">SERVICES</a></li>
+          <li><a class="menu__item" href="#portfolio">PORTFOLIO</a></li>
+          <li><a class="menu__item" href="#">ABOUT</a></li>
+          <li><a class="menu__item" href="#footer">CONTACT</a></li>
+        </ul>
       </div>
     </header>
     <div class="border border__header"></div>
