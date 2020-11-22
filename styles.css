@@ -55,7 +55,7 @@ margin: auto;
     color: #FFFFFF;
     font-style: normal;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 20px;
     line-height: 30px;
     letter-spacing: -0.03em;
     padding-left: 100px;
@@ -615,98 +615,7 @@ h2 {
         margin-left: 25px;
         cursor: pointer;
     }
-
-
-    /* BURGER
-    .active .header__wrapper  {
-       height: 63px;
-   }
-   
-   .active .header_mainLogo {
-       display: none;
-   }
-   
-   .active .header  {
-       position: relative;
-   }
-
-   .active .header__wrapper-burger  {
-       position: fixed;
-       top: 0;
-       width: 277px;
-       height: 100%;
-       background-color: #2D303A;
-       display: list-item;
-       flex-direction: column;
-       justify-content: flex-start;
-       align-items: flex-start;
-       z-index:2;
-       box-shadow: 3px 0px 20px 7px black;    
-   }
-   .active .header__wrapper-burger::marker {
-    unicode-bidi: isolate;
-    font-variant-numeric: tabular-nums;
-    text-transform: none;
-}
-   
-   .active .mainLogo-burger {
-       display: flex;
-       flex-direction: row;
-       align-items: center;
-       justify-content: space-between;
-       width: 100% ;
-       margin-top: 25px;
-       margin-bottom: 180px;
-    }
-
-    .active .burger-burger  {
-        margin-left: 22px;
-        cursor: pointer;
-        transform: rotate(90deg);
-    }
     
-
-    .active .header_mainLogo-burger h1{
-        margin: 0;
-        color: #ffffff;
-        font-size: 25px;
-        line-height: 30px;
-    }
-
-    .active .header_mainLogo-burger span{
-        color: #f06c64;
-    }
-
-    .active  .header_navigation-burger li{
-        cursor: pointer;
-        list-style-type: none;
-        margin-top: 0;
-        padding-left: 40px;
-        font-size: 24px;
-        line-height: 29px;
-        margin-bottom: 27px;  
-    }
-    
-    .active .header_navigation-burger a {
-        color: #FFFFFF;
-        cursor:pointer;
-        text-decoration: none;
-    }
-
-    .active  .header_navigation-burger a:hover{
-        color: #f06c64;
-        cursor: pointer;
-    }
-
-     .active .burgerShadow {
-    background: #2D303A;
-    opacity: 0.6;
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    display: flex;
-    } */
-
     /*new burger*/
 
     .hamburger-menu{
@@ -738,7 +647,21 @@ h2 {
         font-size: 35px;
         font-weight: bold;
       }
-      
+
+      .box-star {
+          color: #F06C64;
+    }
+
+    #menu__toggle:checked ~ .milk-shadow {
+        position: fixed;
+        width: 100%;
+        z-index: 0;
+        background: #2d303a;
+        opacity: 0.6;
+        height: 100%;
+        transition-duration: 1.0s;
+     }
+
       .menu__btn {
         display: flex;
         align-items: center;
@@ -800,7 +723,7 @@ h2 {
     }
 
       .menu__item:hover {
-        color: #e71034;
+        color: #F06C64;
       }
 
 }
