@@ -29,10 +29,10 @@ class Calculator {
 
 
 	}
-
+	// delete one numder
 	delete() {
 		this.currentOperand = this.currentOperand.toString().slice(0, -1); 
-		// delete one numder
+		
 
 	}
 		// add number
@@ -202,7 +202,7 @@ class Calculator {
 
 	}
 
-		//display value is now or numbers separated by commas
+	//display value is now or numbers separated by commas
 	getDisplayNumber(number) {
 
 		const stringNumber = number.toString();
@@ -236,8 +236,6 @@ class Calculator {
 	}
 }
 
-const numToFixed = x => ~(x + '').indexOf('.') ? (x + '').split('.')[1].length : 0;
-//number of characters after zero
 const calculator = new Calculator(previousOperandTextElement, currentOperandTextElement);
 
 
