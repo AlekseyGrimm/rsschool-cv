@@ -77,6 +77,7 @@ margin: auto;
     font-size: 12px;
     letter-spacing: -0.035em;
     cursor: pointer;
+    text-transform: uppercase;
 }
 
 .header_navigationList a {
