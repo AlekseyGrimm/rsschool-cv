@@ -44,7 +44,7 @@ function setBgGreet() {
     greeting.textContent = 'Good Morning, ';
   } else if (hour < 18) {
     // Afternoon
-    document.body.style.backgroundImage = "url('https://tv-lida.by/wp-content/uploads/2020/07/be38c0f8bba2d7ebd0d39900141671a71-780x470.jpg')";
+    document.body.style.backgroundImage = "url('https://www.vash-otdyh.by/images/thumbs/411/big-4.jpg')";
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
