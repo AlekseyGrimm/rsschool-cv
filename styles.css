@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Lato';
+    src: url('./Logo/Lato-Regular.ttf');
+}
 
 html {
    scroll-behavior: smooth;
