@@ -7,7 +7,6 @@
   <title>Simple-Singolo</title>
   <link href="./logo/" rel="stylesheet" />
   <script src="Splide.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 
@@ -146,47 +145,47 @@
         <h2>Portfolio</h2>
         <p class="tools_text"> Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem
           nec elit.</p>
-        <div class="portfolioItems">
-          <div class="portfolioItem">
-            <a href="" data-filter="all">All</a>
-          </div>
-          <div class="portfolioItem">
-            <a href="" data-filter="web">Web Design</a>
-          </div>
-          <div class="portfolioItem">
-            <a href="" data-filter="graphic">Graphic Design</a>
-          </div>
-          <div class="portfolioItem">
-            <a href="" data-filter="artwork">Artwork</a>
-          </div>
+        <ul class="tabs">
+          <li class="tab active" data-id="1">All</li>
+          <li class="tab" data-id="2">Web Design</li>
+          <li class="tab" data-id="3">Graphic Design</li>
+          <li class="tab" data-id="4">Artwork</li>
+        </ul>
+        <div class="output">
+          <section class="section active">
+            <img src="./img/portfolio-1.png" width="100%" alt="1" />
+            <img src="./img/portfolio-2.png" width="100%" alt="2" />
+            <img src="./img/portfolio-3.png" width="100%" alt="3" />
+            <img src="./img/portfolio-4.png" width="100%" alt="4" />
+            <img src="./img/portfolio-5.png" width="100%" alt="5" />
+            <img src="./img/portfolio-6.png" width="100%" alt="6" />
+            <img src="./img/portfolio-7.png" width="100%" alt="7" />
+            <img src="./img/portfolio-8.png" width="100%" alt="8" />
+            <img src="./img/portfolio-9.png" width="100%" alt="9" />
+            <img src="./img/portfolio-10.png" width="100%" alt="10" />
+            <img src="./img/portfolio-11.png" width="100%" alt="11" />
+            <img src="./img/portfolio-12.png" width="100%" alt="12" />
+          </section>
+          <section class="section">
+            <img src="./img/portfolio-5.png" width="100%" alt="5" />
+            <img src="./img/portfolio-6.png" width="100%" alt="6" />
+            <img src="./img/portfolio-7.png" width="100%" alt="7" />
+            <img src="./img/portfolio-8.png" width="100%" alt="8" />
+          </section>
+          <section class="section">
+            <img src="./img/portfolio-9.png" width="100%" alt="9" />
+            <img src="./img/portfolio-10.png" width="100%" alt="10" />
+            <img src="./img/portfolio-11.png" width="100%" alt="11" />
+            <img src="./img/portfolio-12.png" width="100%" alt="12" />
+          </section>
+          <section class="section">
+            <img src="./img/portfolio-1.png" width="100%" alt="1" />
+            <img src="./img/portfolio-2.png" width="100%" alt="2" />
+            <img src="./img/portfolio-3.png" width="100%" alt="3" />
+            <img src="./img/portfolio-4.png" width="100%" alt="4" />
+          </section>
         </div>
-        <div class="tabsItems" id="tabsItems">
-          <div class="tabsItem tabsItemHide" data-cat="graphic"><img src="./img/portfolio-1.png" width="100%" alt="1" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="web"><img src="./img/portfolio-2.png" width="100%" alt="2" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="web"><img src="./img/portfolio-3.png" width="100%" alt="3" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="web"><img src="./img/portfolio-4.png" width="100%" alt="4" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="web"><img src="./img/portfolio-5.png" width="100%" alt="5" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="artwork"><img src="./img/portfolio-6.png" width="100%" alt="6" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="artwork"><img src="./img/portfolio-7.png" width="100%" alt="7" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="artwork"><img src="./img/portfolio-8.png" width="100%" alt="8" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="artwork"><img src="./img/portfolio-9.png" width="100%" alt="9" />
-          </div>
-          <div class="tabsItem tabsItemHide" data-cat="graphic"><img src="./img/portfolio-10.png" width="100%"
-              alt="10" /></div>
-          <div class="tabsItem tabsItemHide" data-cat="graphic"><img src="./img/portfolio-11.png" width="100%"
-              alt="11" /></div>
-          <div class="tabsItem tabsItemHide" data-cat="graphic"><img src="./img/portfolio-12.png" width="100%"
-              alt="12" /></div>
-        </div>
-      </div>
+
     </section>
     <div class="border border__portfolio"></div>
     <footer id="footer">
