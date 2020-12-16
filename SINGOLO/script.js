@@ -87,17 +87,23 @@ for (let i = 0; i < tabs.length; i++) {
   tabs[i].onclick = tabclick
 };
 
+const imageNodes = document.querySelectorAll('section > img');
+
 function tabclick(event) {
   let tab = event.target;
   let tabId = tab.dataset.id;
 
   for (let x = 0; x < tabs.length; x++) {
     tabs[x].classList.remove('active');
-    tabs[tabId - 1].classList.add('active');
-
-    sections[x].classList.remove('active');
-    sections[tabId - 1].classList.add('active');
   }
+  this.classList.add('active');
+  imageNodes.forEach(img => {
+    if (img.dataset.id === tabId || tabId === 'all') {
+      return img.classList.add('active')
+    } else {
+       return img.classList.remove('active')
+    }
+  });
 };
 
 
