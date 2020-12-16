@@ -39,7 +39,7 @@ body {
 }
 
 .border__header {
-  background-color: #323746;
+  background-color: #323953;
 }
 
 .header__wrapper {
@@ -389,7 +389,8 @@ body {
 /* Tools */
 
 .border__tools {
-  background-color: #ffffff;
+  background-color: #4b516e;
+;
 }
 
 h2 {
