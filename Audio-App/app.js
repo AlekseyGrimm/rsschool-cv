@@ -32,17 +32,13 @@ play.addEventListener("click", function() {
 });
 
 replay.addEventListener("click", function() {
-    restartSong(song);
-    
+    restartSong(song);    
   });
-
 
 const restartSong = song =>{
     let currentTime = song.currentTime;
     song.currentTime = 0;
-    console.log("ciao")
-
-}
+};
 
 timeSelect.forEach(option => {
   option.addEventListener("click", function() {
@@ -66,7 +62,7 @@ const checkPlaying = song => {
   }
 };
 
-song.ontimeupdate = function() {
+song.addEventListener('timeupdate', (event) => {
   let currentTime = song.currentTime;
   let elapsed = fakeDuration - currentTime;
   let seconds = Math.floor(elapsed % 60);
@@ -81,4 +77,4 @@ song.ontimeupdate = function() {
     play.src = "./svg/play.svg";
     video.pause();
   }
-};
+});
