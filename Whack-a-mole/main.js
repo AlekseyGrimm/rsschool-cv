@@ -1,19 +1,18 @@
-var holes = document.querySelectorAll(".hole");
-var scoreBoard = document.querySelector(".score");
-var moles = document.querySelectorAll(".mole");
-var lastHole;
-var timeUp = false;
-var score = 0;
+const holes = document.querySelectorAll(".hole");
+const scoreBoard = document.querySelector(".score");
+const moles = document.querySelectorAll(".mole");
+let lastHole;
+let timeUp = false;
+let score = 0;
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
 }
 
 function randomHole(holes) {
-    var idx = Math.floor(Math.random() * holes.length);
-    var hole = holes[idx];
+    let idx = Math.floor(Math.random() * holes.length);
+    let hole = holes[idx];
     if (hole === lastHole) {
-        console.log("Ah nah thats the same one bud");
         return randomHole(holes);
     }
     lastHole = hole;
@@ -21,8 +20,8 @@ function randomHole(holes) {
 }
 
 function peep() {
-    var time = randomTime(200, 1000);
-    var hole = randomHole(holes);
+    let time = randomTime(200, 1000);
+    let hole = randomHole(holes);
     hole.classList.add("up");
     setTimeout(() => {
         hole.classList.remove("up");
@@ -38,8 +37,8 @@ function startGame() {
     setTimeout(() => timeUp = true, 10000)
 }
 
+// writes the score
 function bonk(e) {
-    if (!e.isTrusted) return; // cheater!
     score++;
     this.classList.remove("up");
     scoreBoard.textContent = score;
