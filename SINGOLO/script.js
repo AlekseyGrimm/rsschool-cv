@@ -20,12 +20,6 @@ function resetChangeColor() {
   aboutHeader.classList.remove('changeColor');
   contactHeader.classList.remove('changeColor');
 
-  tagAll.classList.remove('colorTag');
-  tagWebDesign.classList.remove('colorTag');
-  tagGraphicDesign.classList.remove('colorTag');
-  tagArtWork.classList.remove('colorTag');
-
-  body.classList.remove('active');
 };
 
 homeHeader.addEventListener('click', () => {

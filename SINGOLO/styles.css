@@ -577,7 +577,7 @@ h2 {
 }
 
 @media screen and (min-width: 768px) and (max-width: 1020px) {
-  .section.active {
+  .section {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 20px;
@@ -590,7 +590,7 @@ h2 {
 }
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
-  .section.active {
+  .section{
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 14px;
