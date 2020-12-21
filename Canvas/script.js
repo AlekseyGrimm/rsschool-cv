@@ -1,9 +1,9 @@
-var buttonClear = document.getElementById('clearArea');
-var buttonApply = document.getElementById('checkClientRequest');
-var sav = document.getElementById('save-coords');
-var rep = document.getElementById('replay-coords')
+let buttonClear = document.getElementById('clearArea');
+let buttonApply = document.getElementById('checkClientRequest');
+let sav = document.getElementById('save-coords');
+let rep = document.getElementById('replay-coords')
 
-var
+let
     canv = document.getElementById('canvasPaint'),
     ctx = canv.getContext('2d');
 coords = [];
@@ -12,14 +12,17 @@ coords = [];
 canv.width = window.innerWidth;
 canv.height = window.innerHeight;
 
-// Code
-buttonClear.addEventListener('click', function clears() {
-    ctx.clearRect(0, 0, canv.width, canv.height);
+// Clear
+buttonClear.addEventListener ('click', function ()
+{
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, canv.width, canv.height);
+
+    ctx.beginPath();
+    ctx.fillStyle = 'black';  
 });
 
-
-
-var
+let
     br = document.getElementById('clientBrushSize').value,// Brush radius
     bc = ''; // Brush color
 
@@ -40,43 +43,10 @@ document.addEventListener('mouseup', function () {
     coords.push('mouseup');
 });
 
+//save coords
 sav.addEventListener('click', function () {
     localStorage.setItem('coords', JSON.stringify(coords));
-    console.log('saved!');
 });
-
-
-
-rep.addEventListener('click', function () {
-    console.log('replaing');
-    JSON.parse(localStorage.getItem('coords'));
-    
-    var timer = setInterval(function () {
-        if (!coords.length) {
-            clearInterval(timer);
-            ctx.beginPath();
-            return;
-        }
-        var crd = coords.shift(),
-            
-            evt = { clientX: crd["0"], clientY: crd["1"] };
-
-        ctx.lineTo(evt.offsetX, evt.offsetY);
-        ctx.stroke();
-
-        ctx.beginPath();
-        ctx.fillStyle = bc;
-        ctx.arc(evt.offsetX, evt.offsetY, br, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.lineWidth = br * 2;
-        ctx.strokeStyle = bc;
-
-        ctx.beginPath();
-        ctx.moveTo(evt.offsetX, evt.offsetY);
-
-    }, 30);
-});
-
 
 canv.addEventListener('mousemove', function (evt) {
 
@@ -96,7 +66,35 @@ canv.addEventListener('mousemove', function (evt) {
 
         ctx.beginPath();
         ctx.moveTo(evt.offsetX, evt.offsetY);
-    }
+    };
 
 
 });
+
+//replay
+rep.addEventListener('click', function (){
+    let timer = setInterval(function () {
+        if (!coords.length) {
+            clearInterval(timer);
+            ctx.beginPath();
+            return;
+        }
+            let crd = coords.shift(),
+            
+            evt = { offsetX: crd["0"], offsetY: crd["1"] };
+
+        ctx.lineTo(evt.offsetX, evt.offsetY);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.fillStyle = bc;
+        ctx.arc(evt.offsetX, evt.offsetY, br, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.lineWidth = br * 2;
+        ctx.strokeStyle = bc;
+
+        ctx.beginPath();
+        ctx.moveTo(evt.offsetX, evt.offsetY);
+
+    }, 30);
+}); 
