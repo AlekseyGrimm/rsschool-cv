@@ -9,18 +9,27 @@
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
   <div class="controls">
+    <label>Color:</label>
+    <input type="color" id="base" value="#f6f600">
     <label>Spacing:</label>
-    <input type="range" id="spacing" min="10" max="200" value="10">
+    <input type="range" id="spacing" min="10" max="500" value="0" data-sizing="px">
   
     <label>Blur:</label>
-    <input type="range" id="blur" min="0" max="25" value="10">
-  
-    <label>Base Color</label>
-    <input type="color" id="base" value="#ffc600">
+    <input type="range" id="blur" min="0" max="25" value="0" data-sizing="px">
+
+    <label>Inversion:</label>
+    <input type="range" id="invert" min="0" max="100" value="0" data-sizing="%">
+
+    <label>Sepia:</label>
+    <input type="range" id="sepia" min="0" max="100" value="0" data-sizing="%">
+
+    <label>Rotate:</label>
+    <input type="range" id="hue-rotate" min="0" max="360" value="0" data-sizing=deg>
   </div>
+
   
 
-  <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
+  <img src="https://images.wallpaperscraft.ru/image/kubik_kub_raznocvetnyy_yarkiy_chernyy_prostranstvo_61_1920x1080.jpg" style="width: 800px; height: 500px">
 
   <style>
     
@@ -51,7 +60,10 @@
   padding: var(--spacing);
   background: var(--base);
   -webkit-filter: blur(var(--blur));
-  filter: blur(var(--blur));
+  filter: blur(var(--blur,0px)) 
+          invert(var(--invert, 0%)) 
+          sepia(var(--sepia, 0%)) 
+          hue-rotate(var(--hue-rotate, 0deg)); 
 }
   </style>
 
@@ -64,7 +76,7 @@ inputs.forEach(input => input.addEventListener('mousemove', handleUpdate));
 
 function handleUpdate(e) {
   // append 'px' to the end of spacing and blur variables
-  const suffix = (this.id === 'base' ? '' : 'px');
+  const suffix = this.dataset.sizing || '';
   document.documentElement.style.setProperty(`--${this.id}`, this.value + suffix);
 }
   </script>
