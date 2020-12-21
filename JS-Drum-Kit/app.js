@@ -1,14 +1,19 @@
 const keys = document.querySelectorAll('.key');
 
-// Play drum by keyboard press
 
-function playDrum(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    if(!audio) return;
-    audio.currentTime = 0;
+function play(keyCode) {
+	const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
+	if(!audio) return;
+	audio.currentTime = 0;
     audio.play();
-    const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`.key[data-key="${keyCode}"]`);
     key.classList.add('playing');
+};
+
+// Play drum by keyboard press
+function playDrum(e) {
+    play(e.keyCode)
+    audio.play();
 };
 window.addEventListener('keydown' , playDrum);
 
@@ -22,11 +27,8 @@ function removePlayingClass(e){
 
 // Play music by mouse click
 keys.forEach( key => key.addEventListener('click' , playByMouse ));
-function playByMouse(e){
- const keyCode = this.getAttribute('data-key');
-	const audio = document.querySelector(`audio[data-key="${keyCode}"]`);
-	audio.currentTime = 0;
-	audio.play();
-	const key = document.querySelector(`.key[data-key="${keyCode}"]`);
-    key.classList.add('playing');
+function playByMouse (){
+    const keyCode = this.getAttribute('data-key');
+    play(keyCode);
+   	audio.play();  
 };
