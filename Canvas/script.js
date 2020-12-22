@@ -1,12 +1,12 @@
 let buttonClear = document.getElementById('clearArea');
 let buttonApply = document.getElementById('checkClientRequest');
 let sav = document.getElementById('save-coords');
-let rep = document.getElementById('replay-coords')
+let rep = document.getElementById('replay-coords');
 
 let
     canv = document.getElementById('canvasPaint'),
-    ctx = canv.getContext('2d');
-coords = [];
+    ctx = canv.getContext('2d'),
+    coords = [];
 
 // Canvas window size
 canv.width = window.innerWidth;
