@@ -4,9 +4,12 @@ const moles = document.querySelectorAll(".mole");
 const level1 = document.querySelector(".easy");
 const level2 = document.querySelector(".medium");
 const level3 = document.querySelector(".hard");
+const record = document.querySelector(".record");
 let lastHole;
 let timeUp = false;
 let score = 0;
+let rec = localStorage.getItem("totalScore");;
+
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
@@ -39,7 +42,13 @@ function bonk(e) {
     score++;
     this.classList.remove("up");
     scoreBoard.textContent = score;
-    localStorage.setItem("totalScore", scoreBoard.textContent);
+    record.textContent = rec;
+    if (score >= rec) { 
+        rec = score;
+        rec ++
+        localStorage.setItem("totalScore", scoreBoard.textContent);
+        return;
+    };
 };
 
 function startGame(a, b) {

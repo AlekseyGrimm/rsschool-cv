@@ -45,7 +45,13 @@ h1 {
   background: rgba(255, 255, 255, 0.3);
   padding: 0 3rem;
   line-height: 1;
-  border-radius: 1rem;
+  border-radius: 1em;
+}
+
+h2 {
+  text-align: center;
+  font-size: 5rem;
+  margin-bottom: 0;
 }
 
 .game {
