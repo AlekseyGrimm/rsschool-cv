@@ -13,7 +13,6 @@ function play(keyCode) {
 // Play drum by keyboard press
 function playDrum(e) {
     play(e.keyCode)
-    audio.play();
 };
 window.addEventListener('keydown' , playDrum);
 
@@ -30,5 +29,4 @@ keys.forEach( key => key.addEventListener('click' , playByMouse ));
 function playByMouse (){
     const keyCode = this.getAttribute('data-key');
     play(keyCode);
-   	audio.play();  
 };
