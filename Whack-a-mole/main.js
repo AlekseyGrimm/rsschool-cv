@@ -42,12 +42,10 @@ function bonk(e) {
     score++;
     this.classList.remove("up");
     scoreBoard.textContent = score;
-    record.textContent = rec;
-    if (score >= rec) { 
+    if (score > rec) { 
         rec = score;
-        rec ++
-        localStorage.setItem("totalScore", scoreBoard.textContent);
-        return;
+        record.textContent = rec;// rec ++
+        localStorage.setItem("totalScore", rec);
     };
 };
 
