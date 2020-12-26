@@ -8,8 +8,13 @@ const record = document.querySelector(".record");
 let lastHole;
 let timeUp = false;
 let score = 0;
-let rec = localStorage.getItem("totalScore");;
+let recording = localStorage.getItem("totalScore");
 
+
+window.onload = function (){
+    record.textContent = recording;
+    recording.textContent = localStorage.getItem("totalScore");
+ };
 
 function randomTime(min, max) {
     return Math.round(Math.random() * (max - min) + min);
@@ -42,10 +47,10 @@ function bonk(e) {
     score++;
     this.classList.remove("up");
     scoreBoard.textContent = score;
-    if (score > rec) { 
-        rec = score;
-        record.textContent = rec;// rec ++
-        localStorage.setItem("totalScore", rec);
+    if (score > recording) { 
+        recording = score;
+        record.textContent = recording;
+        localStorage.setItem("totalScore", recording);
     };
 };
 
