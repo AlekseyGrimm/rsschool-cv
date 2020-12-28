@@ -21,8 +21,8 @@ timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
 // playback of video and sounds
 sounds.forEach(sound => {
   sound.addEventListener("click", function() {
-    song.src = this.getAttribute("data-sound");
-    video.src = this.getAttribute("data-video");
+    song.src = this.dataset.sound;
+    video.src = this.dataset.video;
     checkPlaying(song);
   });
 });
