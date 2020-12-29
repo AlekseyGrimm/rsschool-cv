@@ -199,7 +199,7 @@ p {
     background-position: 0 bottom;
     transform-origin: center bottom;
     background-size: 50% 100%;
-    animation: move_wave 3s linear infinite;
+    animation: move_wave 7s linear infinite;
 }
 
    /* ANIMATION WAVE */
@@ -223,7 +223,6 @@ p {
     border-radius: 50%;
     color: black;
     background-color: #85add3;
-     /* top:-10vh; */
     position: absolute;
     font-size: 20px;
     font-weight: bolder;

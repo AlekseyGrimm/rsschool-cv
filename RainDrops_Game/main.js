@@ -18,6 +18,7 @@ const totalAnswer = document.getElementById("totalAnswer");
 const waveHeight = document.getElementById("wave-wrapper");
 const raindrop = document.getElementsByClassName("raindrop");
 
+
 let count = 10;
 let score = 0;
 let dropsCount = 1;
@@ -39,7 +40,9 @@ function addFullScreen(event) {
 function goNextPage() {
   wrapperFirstPage.style.display = "none";
   start.style.display = "flex";
+  // startGame()
 };
+
 
 //Play song
 //song.play();
@@ -226,16 +229,13 @@ function enterNumber() {
     scoreTable.textContent = score;
     falseSong.play();
     if (errors == 0) {
-  //    waveHeight.style.height = "20%";
     }
     if (errors == 1) {
-    //  waveHeight.style.height = "40%";
       clearInterval(startOne);
       startGame();
     }
     if (errors == 2) {
-   //   waveHeight.style.height = "60%";
-      clearInterval(startOne);
+        clearInterval(startOne);
       startGame();
     }
     if (errors == 3) {
@@ -247,7 +247,6 @@ function enterNumber() {
 };
 
 // ADD ENTER FROM KEYBOARD
-
 function addKeyBoard(e) {
   if (result.textContent.length > 5) {
     return result.textContent;
