@@ -156,14 +156,12 @@ function goDrop() {
     }
   }
   if (errors == 0) {
-    //   console.log("0");
     setTimeout(() => {
       up = "20%";
       removeDrop();
     }, 6800);
   }
   if (errors == 1) {
-    //   console.log("1");
     setTimeout(() => {
       up = "30%";
       removeDrop();
@@ -171,14 +169,12 @@ function goDrop() {
   }
 
   if (errors == 2) {
-    //   console.log("2");
    timer = setTimeout(() => {
       up = "40%";
       removeDrop();
     }, 4000);
   }
   if (errors == 3) {
-    //   console.log("3");
     gameOver();
   }
   arrayResult.push({ equation: eval(equation), isBonus: bonus });
@@ -351,19 +347,30 @@ function anewGame() {
 // AUTO PLAY GAME
 
 function autoEnterResult() {
-  result.textContent = arrayResult[0].equation;
-  setTimeout(clearScreen, 1000);
+  if (arrayResult[0]) {
+    if (dropsCount % 6 == 0) {
+      result.textContent = 122;
+      setTimeout(clearScreen, 3000);
+    } else {
+      result.textContent = arrayResult[0].equation;
+      setTimeout(clearScreen, 1000);
+    }
+  }
 };
 
 function onAutoPlay() {
   startGame();
   setTimeout(function autoPlay() {
-    result.textContent == arrayResult[0].equation;
-    enterNumber();
-    setTimeout(autoEnterResult, 1500);
-    setTimeout(autoPlay, 2000);
+    setTimeout(autoEnterResult, 4500);
+    if (arrayResult[0]) {
+      enterNumber();
+    }
+    setTimeout(autoPlay, 5000);
   }, 2500);
 };
+
+
+
 
 numbersBtn.forEach((number) => number.addEventListener("click", resultScreen));
 clearBtn.addEventListener("click", clearScreen);
