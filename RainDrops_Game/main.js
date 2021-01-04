@@ -17,6 +17,9 @@ const totalEquations = document.getElementById("totalEquations");
 const totalAnswer = document.getElementById("totalAnswer");
 const waveHeight = document.getElementById("wave-wrapper");
 const raindrop = document.getElementsByClassName("raindrop");
+const playing = document.getElementById ('playing');
+const autoplay = document.getElementById ('autoplay')
+
 
 
 let count = 10;
@@ -37,12 +40,16 @@ function addFullScreen(event) {
   }
 };
 
+//start games
+playing.addEventListener("click", function() {
+  goNextPage();
+  startGame();
+});
+
 function goNextPage() {
   wrapperFirstPage.style.display = "none";
   start.style.display = "flex";
-  // startGame()
-};
-
+ };
 
 //Play song
 //song.play();
@@ -119,6 +126,7 @@ function createDrop(equation, id, isBonus) {
 };
 
 // GO RAINDROP
+
 let timer;
 function goDrop() {
   let up;
@@ -184,12 +192,12 @@ function goDrop() {
 
 function startGame() {
   if (errors == 0) {
-    setTimeout(goDrop, 1500);
-    startOne = setInterval(goDrop, 7000);
-  } else if (errors == 1) {
+    setTimeout(goDrop, 1000);
     startOne = setInterval(goDrop, 4000);
-  } else if (errors == 2){
+  } else if (errors == 1) {
     startOne = setInterval(goDrop, 2000);
+  } else if (errors == 2){
+    startOne = setInterval(goDrop, 1000);
   }
 };
 
@@ -345,7 +353,6 @@ function anewGame() {
 };
 
 // AUTO PLAY GAME
-
 function autoEnterResult() {
   if (arrayResult[0]) {
     if (dropsCount % 6 == 0) {
@@ -357,6 +364,11 @@ function autoEnterResult() {
     }
   }
 };
+
+autoplay.addEventListener("click", function() {
+  goNextPage();
+  onAutoPlay();
+});
 
 function onAutoPlay() {
   startGame();
