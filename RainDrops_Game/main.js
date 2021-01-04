@@ -126,8 +126,8 @@ function createDrop(equation, id, isBonus) {
 };
 
 // GO RAINDROP
-
 let timer;
+
 function goDrop() {
   let up;
   ++id;
@@ -167,20 +167,20 @@ function goDrop() {
     setTimeout(() => {
       up = "20%";
       removeDrop();
-    }, 6800);
+    }, 10000);
   }
   if (errors == 1) {
     setTimeout(() => {
       up = "30%";
       removeDrop();
-    }, 5000);
+    }, 8000);
   }
 
   if (errors == 2) {
    timer = setTimeout(() => {
       up = "40%";
       removeDrop();
-    }, 4000);
+    }, 6000);
   }
   if (errors == 3) {
     gameOver();
@@ -193,11 +193,11 @@ function goDrop() {
 function startGame() {
   if (errors == 0) {
     setTimeout(goDrop, 1000);
-    startOne = setInterval(goDrop, 4000);
+    startOne = setInterval(goDrop, 5000);
   } else if (errors == 1) {
-    startOne = setInterval(goDrop, 2000);
+    startOne = setInterval(goDrop, 3500);
   } else if (errors == 2){
-    startOne = setInterval(goDrop, 1000);
+    startOne = setInterval(goDrop, 2500);
   }
 };
 
@@ -255,80 +255,81 @@ function addKeyBoard(e) {
   if (result.textContent.length > 5) {
     return result.textContent;
   }
-  if (e.which == 49) {
-    if (result.textContent === "0") {
-      result.textContent = "1";
-    } else {
-      result.textContent += "1";
-    }
-  }
-  if (e.which == 50) {
-    if (result.textContent === "0") {
-      result.textContent = "2";
-    } else {
-      result.textContent += "2";
-    }
-  }
-  if (e.which == 51) {
-    if (result.textContent === "0") {
-      result.textContent = "3";
-    } else {
-      result.textContent += "3";
-    }
-  }
-  if (e.which == 52) {
-    if (result.textContent === "0") {
-      result.textContent = "4";
-    } else {
-      result.textContent += "4";
-    }
-  }
-  if (e.which == 53) {
-    if (result.textContent === "0") {
-      result.textContent = "5";
-    } else {
-      result.textContent += "5";
-    }
-  }
-  if (e.which == 54) {
-    if (result.textContent === "0") {
-      result.textContent = "6";
-    } else {
-      result.textContent += "6";
-    }
-  }
-  if (e.which == 55) {
-    if (result.textContent === "0") {
-      result.textContent = "7";
-    } else {
-      result.textContent += "7";
-    }
-  }
-  if (e.which == 56) {
-    if (result.textContent === "0") {
-      result.textContent = "8";
-    } else {
-      result.textContent += "8";
-    }
-  }
-  if (e.which == 57) {
-    if (result.textContent === "0") {
-      result.textContent = "9";
-    } else {
-      result.textContent += "9";
-    }
-  }
-  if (e.which == 48) {
+  if (e.which == 96) {
     if (result.textContent === "0") {
       result.textContent = "0";
     } else {
       result.textContent += "0";
     }
   }
-  if (e.which == 46) {
+  if (e.which == 97) {
+    if (result.textContent === "0") {
+      result.textContent = "1";
+    } else {
+      result.textContent += "1";
+    }
+  }
+  if (e.which == 98) {
+    if (result.textContent === "0") {
+      result.textContent = "2";
+    } else {
+      result.textContent += "2";
+    }
+  }
+  if (e.which == 99) {
+    if (result.textContent === "0") {
+      result.textContent = "3";
+    } else {
+      result.textContent += "3";
+    }
+  }
+  if (e.which == 100) {
+    if (result.textContent === "0") {
+      result.textContent = "4";
+    } else {
+      result.textContent += "4";
+    }
+  }
+  if (e.which == 101) {
+    if (result.textContent === "0") {
+      result.textContent = "5";
+    } else {
+      result.textContent += "5";
+    }
+  }
+  if (e.which == 102) {
+    if (result.textContent === "0") {
+      result.textContent = "6";
+    } else {
+      result.textContent += "6";
+    }
+  }
+  if (e.which == 103) {
+    if (result.textContent === "0") {
+      result.textContent = "7";
+    } else {
+      result.textContent += "7";
+    }
+  }
+  if (e.which == 104) {
+    if (result.textContent === "0") {
+      result.textContent = "8";
+    } else {
+      result.textContent += "8";
+    }
+  }
+  if (e.which == 105) {
+    if (result.textContent === "0") {
+      result.textContent = "9";
+    } else {
+      result.textContent += "9";
+    }
+  }
+
+  if (e.which == 8) {
     clearScreen();
   }
-  if (e.which == 8) {
+  if (e.which == 46) {
     deleteNumber();
   }
   if (e.which == 13) {
@@ -380,7 +381,6 @@ function onAutoPlay() {
     setTimeout(autoPlay, 5000);
   }, 2500);
 };
-
 
 
 

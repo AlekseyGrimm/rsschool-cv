@@ -230,7 +230,7 @@ p {
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    animation: down 20s;
+    animation: down 15s;
     z-index: 4;
 }    
 
