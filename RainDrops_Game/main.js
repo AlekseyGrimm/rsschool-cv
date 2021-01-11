@@ -79,19 +79,14 @@ function getRandomEquation(min, max) {
 
 // CLICK CALCULATOR
 
-function numbersClick(number) {
-  if (result.textContent === "0") {
-    result.textContent = number;
-  } else {
-    result.textContent += number;
-  }
-};
-
 function resultScreen(e) {
-  if (result.textContent.length > 5) {
-    return result.textContent;
+  if (result.textContent.length < 5) {
+    if (result.textContent === "0") {
+      result.textContent = e.target.textContent;
+    } else {
+      result.textContent += e.target.textContent;
+    }
   }
-  numbersClick(e.target.textContent);
 };
 
 function clearScreen() {
@@ -197,7 +192,7 @@ function goDrop() {
 // START GAME
 
 function startGame() {
-  song.play();
+  // song.play();
   if (errors == 0) {
     setTimeout(goDrop, 1000);
     startOne = setInterval(goDrop, 3000);
@@ -261,6 +256,7 @@ const addKeyControl = (e) => {
     clearScreen();
   }
 };
+
 
 function gameOver() {  
   setTimeout(() => {
