@@ -250,9 +250,6 @@ const changeaddKeyBoard = (number) => {
 
 const addKeyControl = (e) => {
   changeaddKeyBoard(e.key);
-};
-
-function addKeyBoard(e) {
   if (e.which == 8) {
     clearScreen();
   }
@@ -317,4 +314,3 @@ deleteBtn.addEventListener("click", deleteNumber);
 enterBtn.addEventListener("click", enterNumber);
 window.addEventListener("click", addFullScreen);
 window.addEventListener("keyup", addKeyControl);
-window.addEventListener("keyup", addKeyBoard);
