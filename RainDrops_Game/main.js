@@ -105,7 +105,7 @@ function deleteNumber() {
       result.textContent.length - 1
     ));
   }
-  return (result.textContent = "0");
+  return (result.textContent = "");
 };
 
 // CREATE DROP
@@ -231,7 +231,7 @@ function enterNumber() {
     score = count + score;
     count++;
     scoreTable.textContent = score;
-    result.textContent = 0;
+    result.textContent = "";
     trueSong.play();
     trueAnswer++;
   } else {
