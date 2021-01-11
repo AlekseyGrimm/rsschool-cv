@@ -19,6 +19,7 @@ const waveHeight = document.getElementById("wave-wrapper");
 const raindrop = document.getElementsByClassName("raindrop");
 const playing = document.getElementById ('playing');
 const autoplay = document.getElementById ('autoplay')
+const isNumberRegExp = /^[0-9]$/;
 
 
 
@@ -31,9 +32,6 @@ let arrayResult = [];
 let startOne;
 let id = 0;
 let timer;
-
-// Play song
-
 
 function addFullScreen(event) {
   if (!event.target.hasAttribute("data-fullscreen")) return;
@@ -57,19 +55,19 @@ function goNextPage() {
 
 //RANDOM NUMBER AND OPERATOR
 
+function getRandomNumber(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
+function getRandomOperator() {
+  var operators = Array("+", "-", "*");
+  var operator = operators[Math.floor(Math.random() * operators.length)];
+  return operator;
+};
+
 function getRandomEquation(min, max) {
-  function getRandomNumber(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  };
-
-  function getRandomOperator() {
-    var operators = Array("+", "-", "*");
-    var operator = operators[Math.floor(Math.random() * operators.length)];
-    return operator;
-  };
-
   const x = getRandomNumber(min, max);
   const y = getRandomOperator();
   const z = getRandomNumber(min, max);
@@ -97,7 +95,7 @@ function resultScreen(e) {
 };
 
 function clearScreen() {
-  return (result.textContent = "0");
+  return (result.textContent = "");
 };
 
 function deleteNumber() {
@@ -126,7 +124,7 @@ function createDrop(equation, id, isBonus) {
   div.append(equation);
 };
 
-// GO RAINDROP
+// GoDrop and RemoveDrop
 
 function goDrop() {
   let up;
@@ -233,7 +231,7 @@ function enterNumber() {
     score = count + score;
     count++;
     scoreTable.textContent = score;
-    result.textContent = "0";
+    result.textContent = 0;
     trueSong.play();
     trueAnswer++;
   } else {
@@ -242,81 +240,19 @@ function enterNumber() {
 };
 
 // ADD ENTER FROM KEYBOARD
+
+const changeaddKeyBoard = (number) => {
+  const isNumber = isNumberRegExp.test(number);
+  const isCorrectLength = result.textContent.length < 5;
+  if (!isNumber || !isCorrectLength) return;
+  result.textContent += number;  
+};
+
+const addKeyControl = (e) => {
+  changeaddKeyBoard(e.key);
+};
+
 function addKeyBoard(e) {
-  if (result.textContent.length > 5) {
-    return result.textContent;
-  }
-  const zero = result.textContent === "0";
-  if (e.which == 96 || e.which == 48) {
-    if (result.textContent === "0") {
-      result.textContent = "0";
-    } else {
-      result.textContent += "0";
-    }
-  }
-  if (e.which == 97 || e.which == 49) {
-    if (result.textContent === "0") {
-      result.textContent = "1";
-    } else {
-      result.textContent += "1";
-    }
-  }
-  if (e.which == 98 || e.which == 50) {
-    if (result.textContent === "0") {
-      result.textContent = "2";
-    } else {
-      result.textContent += "2";
-    }
-  }
-  if (e.which == 99 || e.which == 51) {
-    if (result.textContent === "0") {
-      result.textContent = "3";
-    } else {
-      result.textContent += "3";
-    }
-  }
-  if (e.which == 100 || e.which == 52) {
-    if (result.textContent === "0") {
-      result.textContent = "4";
-    } else {
-      result.textContent += "4";
-    }
-  }
-  if (e.which == 101 || e.which == 53) {
-    if (result.textContent === "0") {
-      result.textContent = "5";
-    } else {
-      result.textContent += "5";
-    }
-  }
-  if (e.which == 102 ||  e.which == 54) {
-    if (result.textContent === "0") {
-      result.textContent = "6";
-    } else {
-      result.textContent += "6";
-    }
-  }
-  if (e.which == 103 || e.which == 55) {
-    if (result.textContent === "0") {
-      result.textContent = "7";
-    } else {
-      result.textContent += "7";
-    }
-  }
-  if (e.which == 104 || e.which == 56) {
-    if (result.textContent === "0") {
-      result.textContent = "8";
-    } else {
-      result.textContent += "8";
-    }
-  }
-  if (e.which == 105 || e.which == 57) {
-    if (result.textContent === "0") {
-      result.textContent = "9";
-    } else {
-      result.textContent += "9";
-    }
-  }
   if (e.which == 8) {
     clearScreen();
   }
@@ -336,7 +272,7 @@ function gameOver() {
     allScore.textContent = score;
     totalEquations.textContent = dropsCount - 1;
     totalAnswer.textContent = trueAnswer;
-    song.stop();
+    song.pause();
   }, 100);
 };
 
@@ -380,4 +316,5 @@ clearBtn.addEventListener("click", clearScreen);
 deleteBtn.addEventListener("click", deleteNumber);
 enterBtn.addEventListener("click", enterNumber);
 window.addEventListener("click", addFullScreen);
+window.addEventListener("keyup", addKeyControl);
 window.addEventListener("keyup", addKeyBoard);
