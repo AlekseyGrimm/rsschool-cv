@@ -3,10 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Fancy-weather</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    
+    <div class="body">
+        <header>
+          <div class="controls">
+            <div class="control">
+              <button id="control_button" class="control_button">
+                <img src="./img/refresh.svg" class="refresh_image"  alt="refresh"/>
+              </button>
+              <div class="button languages">
+                <div id="language_en" class="control_button language active">EN</div>
+                <div id="language_ru" class="control_button language">RU</div>
+                <img src="./img/arrow.svg" class="arrow" alt="arrow"/>
+              </div>
+              <button id="farenheit" class="control_button farenheit">&deg;F</button>
+              <button id="celsius" class="control_button celsius">&deg;C</button>
+            </div>
+            <div class="search">
+              <input type="text" class="search_input" placeholder="Enter your city"/>
+              <button id="search_button" class="search_button">SEARCH</button>
+            </div>
+          </div>
+        </header>
+    </div>
+    <main>
+        <div class="weather">
+            <div class="wrapper_location">
+              <span id="location_city" class="location_city">Lida</span>
+              <div class="date_and_time">
+                <div class="date"></div>
+                <div class="time">00:00:00</div>
+              </div>
+            </div>
+            <div class="wrapper_tempreture">
+              <div class="tempreture">00&deg;</div>
+              <div class="weather_tempreture">
+                <img class="icon" src="#"></img>
+                    <div class="paramets">
+                        <span class="overcast">Overcast</span>
+                        <span class="feelsLike">Feels like: </span>
+                        <span class="Wind">Wind: </span>
+                        <span class="humidity">Humidity: </span>
+                    </div>
+              </div>
+            </div>
+          </div>
+          <div class="three_days">
+            <div class="days">
+                <div id="firstDay" class="daysWeek">Wednesday</div>
+                <div class="one_day">
+                  <div id="firstTemperature">00&deg;C</div>
+                  <span class="icon_one"></span>
+                </div>
+              </div>
+              <div class="days">
+                <div id="secondDay" class="daysWeek">Thursday</div>
+                <div class="one_day">
+                  <div id="secondTemperature">00&deg;C</div>
+                  <span class="icon_two"></span>
+                </div>
+              </div>
+              <div class="days">
+                <div id="thirdDay" class="daysWeek">Friday</div>
+                <div class="one_day">
+                  <div id="thirdTemperature">00&deg;C</div>
+                  <span class="icon_three"></span>
+                </div>
+              </div>
+          </div>
+          <div class="maps">
+            <div id="map" class="map">map</div>
+            <div class="koordinats">
+              <div class="latitude">latitude</div>
+              <div class="longitude">longitude</div>
+            </div>
+          </div>
+    </main>
 </body>
 <script src="/Fancy-weather/dist/main.js"></script>
 </html>
