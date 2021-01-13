@@ -231,6 +231,7 @@ function enterNumber() {
     trueAnswer++;
   } else {
     falseSong.play();
+    clearScreen();
   }
 };
 
