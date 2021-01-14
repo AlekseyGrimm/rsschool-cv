@@ -163,7 +163,6 @@ p {
     display: flex;
     height: 10%;
     width: 90%;
-    transform: translateY(-35%);
     border: solid 3px white;
     border-radius: 35%;
     background-color: tomato;
@@ -296,7 +295,7 @@ p {
     outline: none;
 }
 
-        /* ALL MEDIA */
+    /* ALL MEDIA */
 
 @media screen and (min-width: 320px) and (max-width: 768px) {
 

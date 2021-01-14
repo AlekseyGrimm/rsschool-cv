@@ -142,33 +142,16 @@ function goDrop() {
   const bonus = dropsCount % 6 === 0;
   dropsCount++;
   createDrop(equation, currentId, bonus);
-
-  function removeDrop() {
-    const element = document.getElementById(currentId);
-    if (element) {
-      element.classList.add("boom");
-      setTimeout(() => element.remove(), 100);
-      arrayResult.splice(0, 1);
-      waveHeight.style.height = up;
-      errors++;
-      score -= count;
-      if (score <= 0) {
-        score = 0;
-      }
-      scoreTable.textContent = score;
-      falseSong.play();
-    }
-  }
   if (errors == 0) {
     setTimeout(() => {
       up = "30%";
-      removeDrop();
+      removeDrop(currentId, up);
     }, 7000);
   }
   if (errors == 1) {
     setTimeout(() => {
       up = "50%";
-      removeDrop();
+      removeDrop(currentId, up);
     }, 5000);
     clearInterval(startOne);
     startGame();
@@ -176,7 +159,7 @@ function goDrop() {
   if (errors == 2) {
     timer = setTimeout(() => {
       up = "70%";
-      removeDrop();
+      removeDrop(currentId, up);
     }, 4000);
     clearInterval(startOne);
     startGame();
@@ -186,9 +169,26 @@ function goDrop() {
     clearTimeout(timer);
     gameOver();
   }
+  
   arrayResult.push({ equation: eval(equation), isBonus: bonus });
 };
 
+function removeDrop(currentId, up) {
+  let element = document.getElementById(currentId);
+  if (element) {
+    element.classList.add("boom");
+    setTimeout(() => element.remove(), 100);
+    arrayResult.splice(0, 1);
+    waveHeight.style.height = up;
+    errors++;
+    score -= count;
+    if (score <= 0) {
+      score = 0;
+    }
+    scoreTable.textContent = score;
+    falseSong.play();
+  }  
+};
 // START GAME
 
 function startGame() {
