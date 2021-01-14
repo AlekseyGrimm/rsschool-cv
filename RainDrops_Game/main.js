@@ -81,7 +81,7 @@ function getRandomEquation(min, max) {
 
 function resultScreen(e) {
   if (result.textContent.length < 5) {
-    if (result.textContent === "0") {
+    if (result.textContent === "") {
       result.textContent = e.target.textContent;
     } else {
       result.textContent += e.target.textContent;
@@ -192,7 +192,7 @@ function goDrop() {
 // START GAME
 
 function startGame() {
-  // song.play();
+  song.play();
   if (errors == 0) {
     setTimeout(goDrop, 1000);
     startOne = setInterval(goDrop, 3000);
@@ -241,7 +241,7 @@ const changeaddKeyBoard = (number) => {
   const isNumber = isNumberRegExp.test(number);
   const isCorrectLength = result.textContent.length < 5;
   if (!isNumber || !isCorrectLength) return;
-  result.textContent += number;  
+  result.textContent += number;
 };
 
 const addKeyControl = (e) => {
