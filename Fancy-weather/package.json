@@ -35,8 +35,8 @@
     "SASS"
   ],
   "dependencies": {
+    "d": "^1.0.1",
     "moment": "^2.29.1",
-    "moment-timezone": "^0.5.32",
-    "webpack-dev-server": "^3.11.1"
+    "moment-timezone": "^0.5.32"
   }
 }
