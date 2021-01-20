@@ -74,14 +74,14 @@ window.addEventListener("load", function () {
 
                 const pos = adress.results[0].geometry;
 
-                posLatitude = pos.lat.toFixed(2);
-                posLongitude = pos.lng.toFixed(2);
+                LatitudeNow = pos.lat.toFixed(2);
+                LongitudeNow = pos.lng.toFixed(2);
 
                 localStorage.setItem("city", city);
                 inputCity.value = "";
 
-                getMap(posLatitude, posLongitude);
-                getCoordinats(posLatitude, posLongitude);
+                getMap(LatitudeNow, LongitudeNow);
+                getCoordinats(LatitudeNow, LongitudeNow);
             }
         } catch (error) {
             alert(error);
