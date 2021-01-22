@@ -17,8 +17,8 @@ const totalEquations = document.getElementById("totalEquations");
 const totalAnswer = document.getElementById("totalAnswer");
 const waveHeight = document.getElementById("wave-wrapper");
 const raindrop = document.getElementsByClassName("raindrop");
-const playing = document.getElementById ('playing');
-const autoplay = document.getElementById ('autoplay')
+const autoplay = document.getElementById ('autoplay');
+const playButton = document.getElementById('.control__play-button');
 const isNumberRegExp = /^[0-9]$/;
 
 
@@ -51,7 +51,7 @@ playing.addEventListener("click", function() {
 function goNextPage() {
   wrapperFirstPage.style.display = "none";
   start.style.display = "flex";
- };
+};
 
 //RANDOM NUMBER AND OPERATOR
 
@@ -191,7 +191,7 @@ function removeDrop(currentId, up) {
 };
 // START GAME
 
-function startGame() {
+function startGame() { 
   song.play();
   if (errors == 0) {
     setTimeout(goDrop, 1000);
@@ -288,6 +288,7 @@ function autoEnterResult() {
     }
   }
 };
+
 
 autoplay.addEventListener("click", function() {
   goNextPage();

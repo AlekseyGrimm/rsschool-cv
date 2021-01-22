@@ -201,6 +201,25 @@ p {
     animation: move_wave 7s linear infinite;
 }
 
+#control__play-button {
+    cursor: pointer;
+    width: 50%;
+    height: 50px;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 50px;
+    border: 2px solid;
+    border-radius: 5px;
+    background-color: green;
+    margin: 5px auto 0;
+}
+
+#control__play-button:hover {
+    background-color: red;
+}
+
    /* ANIMATION WAVE */
 
 @keyframes move_wave {
