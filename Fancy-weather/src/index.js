@@ -33,9 +33,10 @@ window.addEventListener("load", function () {
     const buttonRussianLanguage = document.querySelector("#language_ru");
     const buttonEnglishlanguage = document.querySelector("#language_en");
     const isRu = buttonRussianLanguage;
+    const but = "isFarengeit";
     let latitudeNow;
     let longitudeNow;
-    let isFarengeit;
+    let isFarengeit = but === "true";
     let weather;
     let adress;
     let city = "Lida"
@@ -119,10 +120,10 @@ window.addEventListener("load", function () {
 
                 const Now = adress.results[0].geometry;
 
-                LatitudeNow = Now.lat.toFixed(2);
+                LatitudeNow = Now.lat.toFixed(2); //show lat and lng formats a number using fixed-point notation 
                 LongitudeNow = Now.lng.toFixed(2);
 
-                localStorage.setItem("city", city);
+                localStorage.setItem("city", city); // save city in localStorage
                 inputCity.value = "";
 
                 getMap(LatitudeNow, LongitudeNow);
@@ -134,6 +135,7 @@ window.addEventListener("load", function () {
         }
     };
 
+    // if the city is not found then displays a map with coordinates
     function initializeCity(city) {
         if (city) {
             showSearchCity(city);
@@ -167,8 +169,8 @@ window.addEventListener("load", function () {
         const lonMinutes = lon[0];
         const lonSeconds = lon[1];
 
-        latitude.textContent = `${info.positions.latitudeNow} ${latMinutes}°  ${latSeconds}'`;
-        longitude.textContent = `${info.positions.longitudeNow} ${lonMinutes}°  ${lonSeconds}'`;
+        latitude.textContent = `${info.positions.latit} ${latMinutes}°  ${latSeconds}'`;
+        longitude.textContent = `${info.positions.longit} ${lonMinutes}°  ${lonSeconds}'`;
     };
 
     const getWeatherNow = async (city) =>
@@ -188,6 +190,8 @@ window.addEventListener("load", function () {
             const secTemporary = data[16].main.temp;
             const thirdTemporary = data[24].main.temp;
 
+
+            // value Farengeit or celsius
             tempretureNow.textContent = isFarengeit ? `${Math.round(temporaryNow * (9 / 5) + 32)}°` : `${temporaryNow}°`;
             firstTemperature.textContent = isFarengeit ? `${Math.round(firstTemporary * (9 / 5) + 32)}°` : `${Math.round(firstTemporary)}°`;
             secondTemperature.textContent = isFarengeit ? `${Math.round(secTemporary * (9 / 5) + 32)}°` : `${Math.round(secTemporary)}°`;
@@ -199,11 +203,12 @@ window.addEventListener("load", function () {
             humidity.textContent = `${info.summary.humidity} ${data[0].main.humidity}%`;
             speedWind.textContent = `${info.summary.wind} ${data[0].wind.speed.toFixed()} ${info.summary.speed}`;
 
+            // img of the current weather
             iconWeatherNow.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png)`;
             iconOne.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[8].weather[0].icon}@2x.png)`;
             iconTwo.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[16].weather[0].icon}@2x.png)`;
             iconThree.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[24].weather[0].icon}@2x.png)`;
-            
+
             showTime();
         } catch (error) {
             alert(error);
@@ -223,7 +228,6 @@ window.addEventListener("load", function () {
             getMap(latitudeNow, longitudeNow);
         }
     };
-    
 
 
     function showTime() {
@@ -267,9 +271,35 @@ window.addEventListener("load", function () {
         return (Number.parseInt(n, 10) < 10 ? "0" : "") + n;
     };
 
+    function activeButtonTemp(buttonFarenheit, buttonCelsius) {
+        buttonFarenheit.classList.remove("active");
+        buttonCelsius.classList.add("active");
+        showAdress(latitudeNow, longitudeNow);
+        showWeatherNow(city);
+    };
+
+    function TempButton() {
+        if (isFarengeit) {
+            buttonFarenheit.classList.add("active");
+            buttonCelsius.classList.remove("active");
+        }
+    };
+    TempButton();
+
+    function Celsius() {
+        isFarengeit = false;
+        activeButtonTemp(buttonCelsius, buttonFarenheit);
+    };
+
+    function Farenheit() {
+        isFarengeit = true;
+        activeButtonTemp(buttonFarenheit, buttonCelsius);
+    };
 
 
     buttonEnglishlanguage.addEventListener("click", langEn);
     buttonRussianLanguage.addEventListener("click", langRu);
+    buttonCelsius.addEventListener("click", Farenheit);
+    buttonFarenheit.addEventListener("click", Celsius);
 });
 
