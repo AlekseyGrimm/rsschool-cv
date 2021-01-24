@@ -3,7 +3,7 @@ import { LanguageRU } from "./Ru";
 
 
 
-window.addEventListener("load", function () {
+// window.addEventListener("load", function () {
     const buttonRefresh = document.querySelector("#control_button");
     const buttonFarenheit = document.querySelector("#farenheit");
     const buttonCelsius = document.querySelector("#celsius");
@@ -39,7 +39,7 @@ window.addEventListener("load", function () {
     let isFarengeit = but === "true";
     let weather;
     let adress;
-    let city = "Lida"
+    let city;
     let lang = isRu ? "ru" : "en";
     let info = isRu ? LanguageRU : LanguageEN;
 
@@ -94,13 +94,13 @@ window.addEventListener("load", function () {
     };
 
     function getAdress(latitudeNow, longitudeNow) {
-        return fetch(`https://api.opencagedata.com/geocode/v1/json?language=en&q=${latitudeNow}+${longitudeNow}&key=7ec9383669c44f36be73334edd48f8b1&language=${lang}`)
+        return fetch(`https://api.opencagedata.com/geocode/v1/json?language=${lang}&q=${latitudeNow}+${longitudeNow}&key=7ec9383669c44f36be73334edd48f8b1`)
             .then((response) => response.json());
     };
 
     function searchSity(city) {
         return fetch(
-            `https://api.opencagedata.com/geocode/v1/json?q=${city}&&language=${lang}&key=7ec9383669c44f36be73334edd48f8b1`)
+            `https://api.opencagedata.com/geocode/v1/json?q=${city}&language=${lang}&key=7ec9383669c44f36be73334edd48f8b1`)
             .then((response) => response.json());
     };
 
@@ -171,13 +171,13 @@ window.addEventListener("load", function () {
 
         latitude.textContent = `${info.positions.latit} ${latMinutes}°  ${latSeconds}'`;
         longitude.textContent = `${info.positions.longit} ${lonMinutes}°  ${lonSeconds}'`;
+        buttonSearch.textContent = `${info.search.but}`;
+        inputCity.placeholder = `${info.search.input}`;
     };
-
     const getWeatherNow = async (city) =>
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Minsk&lang=en&units=metric&appid=c3ee163c21d694ddab64849983b70180`)
+        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=c3ee163c21d694ddab64849983b70180`)
             .then((response) => response.json());
-
-
+            
     async function showWeatherNow(city) {
         try {
             weather = await getWeatherNow(city);
@@ -296,10 +296,18 @@ window.addEventListener("load", function () {
         activeButtonTemp(buttonFarenheit, buttonCelsius);
     };
 
+    function KeyBoard(e) {
+        if (e.which === 13) {
+            showSearchCity();
+        }
+    };
+
 
     buttonEnglishlanguage.addEventListener("click", langEn);
     buttonRussianLanguage.addEventListener("click", langRu);
     buttonCelsius.addEventListener("click", Farenheit);
     buttonFarenheit.addEventListener("click", Celsius);
-});
+    buttonSearch.addEventListener("click", showSearchCity);
+    window.addEventListener("keypress", KeyBoard);
+// });
 
