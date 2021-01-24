@@ -163,47 +163,47 @@ function getCoordinats(latitudeNow, longitudeNow) {
     inputCity.placeholder = `${info.search.input}`;
 };
 
-    const getWeatherNow = async (city) =>
-        fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Grodno&units=metric&lang=${lang}&appid=c3ee163c21d694ddab64849983b70180`)
-            .then((response) => response.json());
+const getWeatherNow = async (city) =>
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Grodno&units=metric&lang=${lang}&appid=c3ee163c21d694ddab64849983b70180`)
+        .then((response) => response.json());
 
-    async function showWeatherNow(city) {
-        try {
-            weather = await getWeatherNow(city);
-            console.log(weather);
+async function showWeatherNow(city) {
+    try {
+        weather = await getWeatherNow(city);
+        console.log(weather);
 
-            const data = weather.list;
-            const feelLike = data[0].main.feels_like;
-            const temporaryNow = Math.round(data[0].main.temp);
-            const firstTemporary = data[8].main.temp;
-            const secTemporary = data[16].main.temp;
-            const thirdTemporary = data[24].main.temp;
+        const data = weather.list;
+        const feelLike = data[0].main.feels_like;
+        const temporaryNow = Math.round(data[0].main.temp);
+        const firstTemporary = data[8].main.temp;
+        const secTemporary = data[16].main.temp;
+        const thirdTemporary = data[24].main.temp;
 
 
-            // value Farengeit or celsius
-            tempretureNow.textContent = isFarengeit ? `${Math.round(temporaryNow * (9 / 5) + 32)}°` : `${temporaryNow}°`;
-            firstTemperature.textContent = isFarengeit ? `${Math.round(firstTemporary * (9 / 5) + 32)}°` : `${Math.round(firstTemporary)}°`;
-            secondTemperature.textContent = isFarengeit ? `${Math.round(secTemporary * (9 / 5) + 32)}°` : `${Math.round(secTemporary)}°`;
-            thirdTemperature.textContent = isFarengeit ? `${Math.round(thirdTemporary * (9 / 5) + 32)}°` : `${Math.round(thirdTemporary)}°`;
+        // value Farengeit or celsius
+        tempretureNow.textContent = isFarengeit ? `${Math.round(temporaryNow * (9 / 5) + 32)}°` : `${temporaryNow}°`;
+        firstTemperature.textContent = isFarengeit ? `${Math.round(firstTemporary * (9 / 5) + 32)}°` : `${Math.round(firstTemporary)}°`;
+        secondTemperature.textContent = isFarengeit ? `${Math.round(secTemporary * (9 / 5) + 32)}°` : `${Math.round(secTemporary)}°`;
+        thirdTemperature.textContent = isFarengeit ? `${Math.round(thirdTemporary * (9 / 5) + 32)}°` : `${Math.round(thirdTemporary)}°`;
 
-            overcast.textContent = data[0].weather[0].description;
+        overcast.textContent = data[0].weather[0].description;
 
-            feelsLike.textContent = isFarengeit ? `${info.summary.feels} ${`${Math.round(feelLike * (9 / 5) + 32)}°`}` : `${info.summary.feels} ${`${Math.round(feelLike)}°`}`;
-            humidity.textContent = `${info.summary.humidity} ${data[0].main.humidity}%`;
-            speedWind.textContent = `${info.summary.wind} ${data[0].wind.speed.toFixed()} ${info.summary.speed}`;
+        feelsLike.textContent = isFarengeit ? `${info.summary.feels} ${`${Math.round(feelLike * (9 / 5) + 32)}°`}` : `${info.summary.feels} ${`${Math.round(feelLike)}°`}`;
+        humidity.textContent = `${info.summary.humidity} ${data[0].main.humidity}%`;
+        speedWind.textContent = `${info.summary.wind} ${data[0].wind.speed.toFixed()} ${info.summary.speed}`;
 
-            // img of the current weather
-            iconWeatherNow.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png)`;
-            iconOne.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[8].weather[0].icon}@2x.png)`;
-            iconTwo.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[16].weather[0].icon}@2x.png)`;
-            iconThree.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[24].weather[0].icon}@2x.png)`;
+        // img of the current weather
+        iconWeatherNow.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[0].weather[0].icon}@2x.png)`;
+        iconOne.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[8].weather[0].icon}@2x.png)`;
+        iconTwo.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[16].weather[0].icon}@2x.png)`;
+        iconThree.style.backgroundImage = `url(http://openweathermap.org/img/wn/${data[24].weather[0].icon}@2x.png)`;
 
-            showTime();
-        } catch (error) {
-            alert(error);
-        }
-    };
-    showWeatherNow();
+        showTime();
+    } catch (error) {
+        alert(error);
+    }
+};
+showWeatherNow();
 
 
 function initMap() {
@@ -286,6 +286,8 @@ function TempButton() {
 };
 TempButton();
 
+
+// button click C of F
 function Celsius() {
     isFarengeit = false;
     activeButtonTemp(buttonCelsius, buttonFarenheit);
@@ -296,13 +298,32 @@ function Farenheit() {
     activeButtonTemp(buttonFarenheit, buttonCelsius);
 };
 
+// add inter
 function KeyBoard(e) {
     if (e.which === 13) {
         showSearchCity();
     }
 };
 
+async function getLinkToImage() {
+    const url = 'https://api.unsplash.com/photos/random?query=morning&client_id=e2077ad31a806c894c460aec8f81bc2af4d09c4f8104ae3177bb809faf0eac17';
+    const res = await fetch(url);
+    const data = await res.json();
+    return data.urls.regular;
+};
 
+async function getBackground() {
+    try {
+        const backgroundLink = await getLinkToImage();
+        body.style.backgroundImage = `url(${backgroundLink})`;
+        body.style.transition = "1s";
+    } catch (error) {
+        alert(error);
+    }
+};
+
+
+buttonRefresh.addEventListener("click", getBackground);
 buttonEnglishlanguage.addEventListener("click", langEn);
 buttonRussianLanguage.addEventListener("click", langRu);
 buttonCelsius.addEventListener("click", Farenheit);
