@@ -38,7 +38,8 @@ let longitudeNow;
 let isFarengeit = but === "true";
 let weather;
 let adress;
-let city = localStorage.getItem("city");
+let city;
+//  = localStorage.getItem("city");
 let lang = isRu ? "ru" : "en";
 let info = isRu ? LanguageRU : LanguageEN;
 
@@ -122,12 +123,13 @@ async function showSearchCity(city) {
             LatitudeNow = Now.lat.toFixed(2); //show lat and lng formats a number using fixed-point notation 
             LongitudeNow = Now.lng.toFixed(2);
 
-            localStorage.setItem("city", city); // save city in localStorage
+            // localStorage.setItem("city", city); // save city in localStorage
             inputCity.value = "";
 
-            showWeatherNow(city);
+
             getMap(LatitudeNow, LongitudeNow);
             getCoordinats(LatitudeNow, LongitudeNow);
+            showWeatherNow(city);
         }
     } catch (error) {
         alert(error);
@@ -170,7 +172,7 @@ const getWeatherNow = async (city) =>
 async function showWeatherNow(city) {
     try {
         weather = await getWeatherNow(city);
-        console.log(weather);
+        // console.log(weather);
 
         const data = weather.list;
         const feelLike = data[0].main.feels_like;
@@ -203,10 +205,10 @@ async function showWeatherNow(city) {
         alert(error);
     }
 };
-showWeatherNow();
+// showWeatherNow();
 
 
-function initMap() {
+function initMap(latitudeNow, longitudeNow) {
     navigator.geolocation.getCurrentPosition(showMap);
 
     function showMap(position) {
