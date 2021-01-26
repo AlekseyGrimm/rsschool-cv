@@ -2,7 +2,7 @@ import { LanguageEN } from "./En";
 import { LanguageRU } from "./Ru";
 
 
-
+window.addEventListener("load", function () {
 const buttonRefresh = document.querySelector("#control_button");
 const buttonFarenheit = document.querySelector("#farenheit");
 const buttonCelsius = document.querySelector("#celsius");
@@ -31,17 +31,17 @@ const secondTemperature = document.querySelector("#secondTemperature");
 const thirdTemperature = document.querySelector("#thirdTemperature");
 const buttonRussianLanguage = document.querySelector("#language_ru");
 const buttonEnglishlanguage = document.querySelector("#language_en");
-const isRu = buttonRussianLanguage;
-const but = "isFarengeit";
-let latitudeNow;
-let longitudeNow;
+const LangageStorage = localStorage.getItem("lang");
+const isRu = LangageStorage && LangageStorage === "ru";
+const but = localStorage.getItem("isFarengeit");
 let isFarengeit = but === "true";
-let weather;
-let adress;
-let city;
-//  = localStorage.getItem("city");
+let city = localStorage.getItem("city");
 let lang = isRu ? "ru" : "en";
 let info = isRu ? LanguageRU : LanguageEN;
+let weather;
+let adress;
+let latitudeNow;
+let longitudeNow;
 
 
 // button Language RU and EH
@@ -79,24 +79,26 @@ function changeLocalLang() {
     getCoordinats(latitudeNow, longitudeNow);
 };
 
-
-function getMap(latitudeNow, longitudeNow) {
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhbHBldGMiLCJhIjoiY2trNWFqNmU4MDlhaDJvbGtocjlnN2s1ZiJ9.aDls4v3wiKMmvUBS76whKQ';
-    let map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: 'mapbox://styles/mapbox/streets-v11', // style URL
-        center: [longitudeNow, latitudeNow], // starting position [lng, lat]
-        zoom: 9 // starting zoom
-    });
-    const marker = new mapboxgl.Marker()
-        .setLngLat([longitudeNow, latitudeNow])
-        .addTo(map);
-};
-
 function getAdress(latitudeNow, longitudeNow) {
     return fetch(`https://api.opencagedata.com/geocode/v1/json?language=${lang}&q=${latitudeNow}+${longitudeNow}&key=7ec9383669c44f36be73334edd48f8b1`)
         .then((response) => response.json());
 };
+
+async function showAdress(latitudeNow, longitudeNow) {
+    try {
+        adress = await getAdress(latitudeNow, longitudeNow);
+        console.log(adress);
+        const locations = adress.results[0].components;
+        city = locations.city;
+        const { country } = locations;
+
+        locationCity.textContent = `${city}, ${country}`;
+        showWeatherNow(city);
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 
 function searchSity(city) {
     return fetch(
@@ -123,7 +125,7 @@ async function showSearchCity(city) {
             LatitudeNow = Now.lat.toFixed(2); //show lat and lng formats a number using fixed-point notation 
             LongitudeNow = Now.lng.toFixed(2);
 
-            // localStorage.setItem("city", city); // save city in localStorage
+            localStorage.setItem("city", city); // save city in localStorage
             inputCity.value = "";
 
 
@@ -132,41 +134,12 @@ async function showSearchCity(city) {
             showWeatherNow(city);
         }
     } catch (error) {
-        alert(error);
+        console.log(error);
     }
-};
-
-async function showAdress(latitudeNow, longitudeNow) {
-    try {
-        adress = await getAdress(latitudeNow, longitudeNow);
-        console.log(adress);
-        const locations = adress.results[0].components;
-        city = locations.city;
-        const { country } = locations;
-
-        locationCity.textContent = `${city}, ${country}`;
-        showWeatherNow(city);
-    } catch (error) {
-        alert(error);
-    }
-};
-
-function getCoordinats(latitudeNow, longitudeNow) {
-    const lat = String(latitudeNow).split(".");
-    const lon = String(longitudeNow).split(".");
-    const latMinutes = lat[0];
-    const latSeconds = lat[1];
-    const lonMinutes = lon[0];
-    const lonSeconds = lon[1];
-
-    latitude.textContent = `${info.positions.latit} ${latMinutes}°  ${latSeconds}'`;
-    longitude.textContent = `${info.positions.longit} ${lonMinutes}°  ${lonSeconds}'`;
-    buttonSearch.textContent = `${info.search.but}`;
-    inputCity.placeholder = `${info.search.input}`;
 };
 
 const getWeatherNow = async (city) =>
-    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=Grodno&units=metric&lang=${lang}&appid=c3ee163c21d694ddab64849983b70180`)
+    fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&lang=${lang}&appid=c3ee163c21d694ddab64849983b70180`)
         .then((response) => response.json());
 
 async function showWeatherNow(city) {
@@ -202,11 +175,24 @@ async function showWeatherNow(city) {
 
         showTime();
     } catch (error) {
-        alert(error);
+        console.log(error);
     }
 };
-// showWeatherNow();
 
+
+function getCoordinats(latitudeNow, longitudeNow) {
+    const lat = String(latitudeNow).split(".");
+    const lon = String(longitudeNow).split(".");
+    const latMinutes = lat[0];
+    const latSeconds = lat[1];
+    const lonMinutes = lon[0];
+    const lonSeconds = lon[1];
+
+    latitude.textContent = `${info.positions.latit} ${latMinutes}°  ${latSeconds}'`;
+    longitude.textContent = `${info.positions.longit} ${lonMinutes}°  ${lonSeconds}'`;
+    buttonSearch.textContent = `${info.search.but}`;
+    inputCity.placeholder = `${info.search.input}`;
+};
 
 function initMap(latitudeNow, longitudeNow) {
     navigator.geolocation.getCurrentPosition(showMap);
@@ -288,6 +274,18 @@ function TempButton() {
 };
 TempButton();
 
+function getMap(latitudeNow, longitudeNow) {
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic3RhbHBldGMiLCJhIjoiY2trNWFqNmU4MDlhaDJvbGtocjlnN2s1ZiJ9.aDls4v3wiKMmvUBS76whKQ';
+    let map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/mapbox/streets-v11', // style URL
+        center: [longitudeNow, latitudeNow], // starting position [lng, lat]
+        zoom: 9 // starting zoom
+    });
+    const marker = new mapboxgl.Marker()
+        .setLngLat([longitudeNow, latitudeNow])
+        .addTo(map);
+};
 
 // button click C of F
 function Celsius() {
@@ -330,6 +328,6 @@ buttonEnglishlanguage.addEventListener("click", langEn);
 buttonRussianLanguage.addEventListener("click", langRu);
 buttonCelsius.addEventListener("click", Farenheit);
 buttonFarenheit.addEventListener("click", Celsius);
-buttonSearch.addEventListener("click", showSearchCity);
+buttonSearch.addEventListener("onclick", showSearchCity);
 window.addEventListener("keypress", KeyBoard);
-
+});
