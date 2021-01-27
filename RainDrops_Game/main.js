@@ -108,7 +108,7 @@ function deleteNumber() {
 function createDrop(equation, id, isBonus) {
   const drop = document.getElementById("drop");
   let div = document.createElement("div");
-  div.className = "raindrop";
+  div.classList.add("raindrop");
   div.id = id;
   if (isBonus) {
     div.style.backgroundColor = "red";

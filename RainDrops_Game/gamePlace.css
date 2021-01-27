@@ -3,15 +3,6 @@
     overflow: hidden;
 }
 
-body {
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-    overflow: hidden;
-}
-
   /* FIRST PAGE STYLES */
 .wrapperFirstPage{
     height: 100vh;
