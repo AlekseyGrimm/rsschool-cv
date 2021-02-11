@@ -18,7 +18,6 @@ const totalAnswer = document.getElementById("totalAnswer");
 const waveHeight = document.getElementById("wave-wrapper");
 const raindrop = document.getElementsByClassName("raindrop");
 const autoplay = document.getElementById ('autoplay');
-const playButton = document.getElementById('.control__play-button');
 const isNumberRegExp = /^[0-9]$/;
 
 
